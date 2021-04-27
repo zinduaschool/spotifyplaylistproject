@@ -68,3 +68,41 @@ for t in tracklist['tracks']['items']:
 
     songname =t['track']['name']
     print(songname)
+    
+    
+    #to print the song's popularity or streams
+    songpopularity=t['track']['popularity']
+    print(songpopularity)
+    
+    
+##to sort the songnames based on their popularity
+
+songnames=list()
+songpop=list()
+
+for t in tracklist['tracks']['items']:
+     #to print the song's name
+    songname =t['track']['name']
+   
+    
+    #to print the song's popularity or streams
+    songpopularity=t['track']['popularity']
+   
+    #to add data to the lists
+    songnames.append(songname)
+    songpop.append(songpopularity)
+    
+    
+
+#creating a dictionary of songlist to songpopularity
+songs = {k:v for k,v in zip(songnames,songpop) }
+ 
+# sort the songs in descending order
+songs = sorted(songs, key=songs.get, reverse=True)
+ 
+print(songs)    
+    
+    
+##to output the songs in a sorted manner
+pd.DataFrame(songs,sorted(songpop,reverse=True))
+
